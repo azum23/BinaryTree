@@ -20,7 +20,8 @@ namespace BinaryTreeB
             bTree.Add(12);
             bTree.Add(1);
             bTree.Add(3);
-
+            Console.WriteLine($"\nВ дереве {bTree.Count} узлов");
+            bTree.Contains(3);
             Console.ReadKey();
         }
     }

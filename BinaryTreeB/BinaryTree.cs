@@ -63,5 +63,47 @@ namespace BinaryTreeB
         {
             throw new NotImplementedException();
         }
+
+        public int Count
+        {
+            get { return count; }
+        }
+
+        public bool Contains(T value)
+        {
+            BinaryTreeNode<T> parent;
+            return FindWithParent(value, out parent) != null;
+        }
+
+        public BinaryTreeNode<T> FindWithParent(T value, out BinaryTreeNode<T> parent)
+        {
+            BinaryTreeNode<T> current = root;
+            Console.WriteLine($"---\tНaчинаем поиск [{value}] с корня дерева [{current.Value}]");
+            parent = null;
+
+            while (current != null)
+            {
+                int result = current.CompareTo(value);
+                if (result > 0)
+                {
+                    parent = current;
+                    current = current.Left;
+                    Console.WriteLine($"---\tСпускаемся влево к ноде [{current.Value}]");
+
+                }
+                else if (result < 0 )
+                {
+                    parent = current;
+                    current = current.Right;
+                    Console.WriteLine($"---\tСпускаемся вправо к ноде [{current.Value}]");
+                }
+                else
+                {
+                    Console.WriteLine($"---\tИскомый элемент {value} найден");
+                    break;
+                }
+            }
+            return current;
+        }
     }
 }
