@@ -78,7 +78,7 @@ namespace BinaryTreeB
         public BinaryTreeNode<T> FindWithParent(T value, out BinaryTreeNode<T> parent)
         {
             BinaryTreeNode<T> current = root;
-            Console.WriteLine($"---\tНaчинаем поиск [{value}] с корня дерева [{current.Value}]");
+            Console.WriteLine($"--->\tНaчинаем поиск [{value}] с корня дерева [{current.Value}]");
             parent = null;
 
             while (current != null)
@@ -88,22 +88,58 @@ namespace BinaryTreeB
                 {
                     parent = current;
                     current = current.Left;
-                    Console.WriteLine($"---\tСпускаемся влево к ноде [{current.Value}]");
+                    Console.WriteLine($"--->\tСпускаемся влево к ноде [{current.Value}]");
 
                 }
-                else if (result < 0 )
+                else if (result < 0)
                 {
                     parent = current;
                     current = current.Right;
-                    Console.WriteLine($"---\tСпускаемся вправо к ноде [{current.Value}]");
+                    Console.WriteLine($"--->\tСпускаемся вправо к ноде [{current.Value}]");
                 }
                 else
                 {
-                    Console.WriteLine($"---\tИскомый элемент {value} найден");
+                    Console.WriteLine($"--->\tИскомый элемент {value} найден");
                     break;
                 }
             }
             return current;
         }
+
+        //public bool Remove(T value)
+        //{
+        //    BinaryTreeNode<T> current;
+        //    BinaryTreeNode<T> parent;
+
+        //    current = FindWithParent(value, out parent);
+
+        //    if (current == null)
+        //    {
+        //        return false;
+        //    }
+
+        //    count--;
+
+        //    // удаляемый узел не имеет правого потомка.
+        //    if (current.Right == null)
+        //    {
+        //        // проверяем не является ли корнем дерева.
+        //        if (parent == null)
+        //        {
+        //            root = current.Left;
+        //        }
+        //        // не является едем дальше.
+        //        else
+        //        {
+        //            int result = parent.CompareTo(current.Value);
+        //            if (result > 0)
+        //            {
+        //                parent.Left = current.Left;
+        //            }
+        //        }
+        //    }
+
+        //    return true;
+        //}
     }
 }
